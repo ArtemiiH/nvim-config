@@ -1,4 +1,6 @@
 return {
+	{ "nvim-neotest/nvim-nio" },
+
 	{
 		"stevearc/conform.nvim",
 		config = function()
@@ -61,7 +63,7 @@ return {
 				-- python stuff
 				"python-lsp-server",
 				"mypy",
-				"ruff",
+				"ruff-lsp",
 				"black",
 				"debugpy",
 				"isort",
@@ -70,7 +72,7 @@ return {
 	},
 
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		ft = { "go", "lua", "yaml", "markdown", "python" },
 		opts = function()
 			return require("configs.null-ls")
