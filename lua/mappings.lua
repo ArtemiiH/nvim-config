@@ -18,12 +18,25 @@ map("n", "<leader>i", function()
 end, { desc = "Terminal New floating window" })
 
 -- Dap
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Dap add breakpoint at line" })
+map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Dap Add breakpoint at line" })
 map("n", "<leader>dus", function()
 	local widgets = require("dap.ui.widgets")
 	local sidebar = widgets.sidebar(widgets.scopes)
 	sidebar.open()
 end, { desc = "Dap Open debugging sidebar" })
+
+map("n", "<F5>", function()
+	require("dap").continue()
+end, { desc = "Dap Continue" })
+map("n", "<F10>", function()
+	require("dap").step_over()
+end, { desc = "Dap Step over" })
+map("n", "<F11>", function()
+	require("dap").step_into()
+end, { desc = "Dap Step into" })
+map("n", "<F12>", function()
+	require("dap").step_out()
+end, { desc = "Dap Step out" })
 
 -- Dap Python
 map("n", "<leader>dpr", function()
