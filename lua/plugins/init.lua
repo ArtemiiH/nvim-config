@@ -1,139 +1,109 @@
 return {
-	{
-		"stevearc/conform.nvim",
-		config = function()
-			require("configs.conform")
-		end,
-	},
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
+  },
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = require("configs.nvim-treesitter"),
-	},
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "BufReadPre",
+    enabled = true,
+    opts = {
+      mode = "cursor",
+      multiline_threshold = 30,
+    },
+  },
 
-	{
-		"nvim-tree/nvim-tree.lua",
-		opts = require("configs.nvim-tree"),
-	},
+  {
+    "williamboman/mason.nvim",
+    opts = {
+      ensure_installed = {
+        -- lua stuff
+        "lua-language-server",
+        "stylua",
 
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("configs.lspconfig")
-		end,
-	},
+        -- shell stuff
+        "shfmt",
 
-	{
-		"nvim-treesitter/nvim-treesitter-context",
-		event = "BufReadPre",
-		enabled = true,
-		opts = {
-			mode = "cursor",
-			multiline_threshold = 30,
-		},
-	},
+        -- go stuff
+        "gopls",
 
-	{
-		"williamboman/mason.nvim",
-		opts = {
-			ensure_installed = {
-				-- lua stuff
-				"lua-language-server",
-				"stylua",
+        -- python stuff
+        "pyright",
+        "ruff-lsp",
+        "debugpy",
+      },
+    },
+  },
 
-				-- web dev stuff
-				"css-lsp",
-				"html-lsp",
-				"typescript-language-server",
-				"deno",
-				"prettier",
+  {
+    "nvimtools/none-ls.nvim",
+    ft = { "go", "lua", "yaml", "markdown" },
+    opts = function()
+      return require "configs.null-ls"
+    end,
+  },
 
-				-- c/cpp stuff
-				"clangd",
-				"clang-format",
+  {
+    "mfussenegger/nvim-dap",
+  },
 
-				-- shell stuff
-				"shfmt",
+  {
+    "nvim-neotest/nvim-nio",
+  },
 
-				-- go stuff
-				"gopls",
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    config = function()
+      local dap = require "dap"
+      local dapui = require "dapui"
+      dapui.setup()
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+      dap.listeners.after.event_terminated["dapui_config"] = function()
+        dapui.close()
+      end
+      dap.listeners.after.event_exited["dapui_config"] = function()
+        dapui.close()
+      end
+    end,
+  },
 
-				-- python stuff
-				"python-lsp-server",
-				"mypy",
-				"ruff-lsp",
-				"black",
-				"debugpy",
-				"isort",
-			},
-		},
-	},
+  {
+    "mfussenegger/nvim-dap-python",
+    ft = "python",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "rcarriga/nvim-dap-ui",
+    },
+    config = function()
+      local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+      require("dap-python").setup(path)
+    end,
+  },
 
-	{
-		"nvimtools/none-ls.nvim",
-		ft = { "go", "lua", "yaml", "markdown", "python" },
-		opts = function()
-			return require("configs.null-ls")
-		end,
-	},
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+    end,
+  },
 
-	{
-		"mfussenegger/nvim-dap",
-	},
-
-	{
-		"nvim-neotest/nvim-nio",
-	},
-
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-		config = function()
-			local dap = require("dap")
-			local dapui = require("dapui")
-			dapui.setup()
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open()
-			end
-			dap.listeners.after.event_terminated["dapui_config"] = function()
-				dapui.close()
-			end
-			dap.listeners.after.event_exited["dapui_config"] = function()
-				dapui.close()
-			end
-		end,
-	},
-
-	{
-		"mfussenegger/nvim-dap-python",
-		ft = "python",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-		},
-		config = function()
-			local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-			require("dap-python").setup(path)
-		end,
-	},
-
-	{
-		"leoluz/nvim-dap-go",
-		ft = "go",
-		dependencies = "mfussenegger/nvim-dap",
-		config = function(_, opts)
-			require("dap-go").setup(opts)
-		end,
-	},
-
-	{
-		"olexsmir/gopher.nvim",
-		ft = "go",
-		config = function(_, opts)
-			require("gopher").setup(opts)
-		end,
-		build = function()
-			vim.cmd([[silent! GoInstallDeps]])
-		end,
-	},
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    config = function(_, opts)
+      require("gopher").setup(opts)
+    end,
+    build = function()
+      vim.cmd [[silent! GoInstallDeps]]
+    end,
+  },
 }

@@ -36,4 +36,5 @@ require "nvchad.autocmds"
 
 vim.schedule(function()
   require "mappings"
+  require("dap.ext.vscode").load_launchjs()
 end)
