@@ -33,7 +33,8 @@ return {
 
         -- python stuff
         "pyright",
-        "ruff-lsp",
+        "isort",
+        "black",
         "debugpy",
       },
     },
@@ -44,6 +45,17 @@ return {
     ft = { "go", "lua", "yaml", "markdown" },
     opts = function()
       return require "configs.null-ls"
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    cmd = { "ConformInfo" },
+    opts = function()
+      return require "configs.conform"
+    end,
+    config = function(_, opts)
+      require("conform").setup(opts)
     end,
   },
 
