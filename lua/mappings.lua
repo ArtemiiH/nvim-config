@@ -15,29 +15,35 @@ end, { desc = "Terminal New floating window" })
 
 -- Dap
 map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Dap Add breakpoint at line" })
-map("n", "<leader>dus", function()
-  local widgets = require "dap.ui.widgets"
-  local sidebar = widgets.sidebar(widgets.scopes)
-  sidebar.open()
-end, { desc = "Dap Open debugging sidebar" })
 
-map("n", "<F5>", function()
+map("n", "<F8>", function()
   require("dap").continue()
 end, { desc = "Dap Continue" })
-map("n", "<F10>", function()
+map("n", "<F9>", function()
   require("dap").step_over()
 end, { desc = "Dap Step over" })
-map("n", "<F11>", function()
+map("n", "<F4>", function()
   require("dap").step_into()
 end, { desc = "Dap Step into" })
-map("n", "<F12>", function()
+map("n", "<F7>", function()
   require("dap").step_out()
 end, { desc = "Dap Step out" })
+
+-- Dap-UI
+map("n", "<leader>duo", function()
+  require("dapui").open()
+end, { desc = "Dap Open UI" })
+map("n", "<leader>duc", function()
+  require("dapui").close()
+end, { desc = "Dap Open UI" })
 
 -- Dap Python
 map("n", "<leader>dpr", function()
   require("dap-python").test_method()
-end)
+end, { desc = "Dap-Python Run and debug closes test method above the cursor" })
+map("n", "<leader>dpc", function()
+  require("dap-python").test_class()
+end, { desc = "Dap-Python Run and debug closes test class above the cursor" })
 
 -- Dap Go
 map("n", "<leader>dgt", function()
