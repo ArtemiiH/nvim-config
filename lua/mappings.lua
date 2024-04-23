@@ -14,7 +14,7 @@ map("n", "<leader>i", function()
 end, { desc = "Terminal New floating window" })
 
 -- Dap
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Dap Add breakpoint at line" })
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint <CR>", { desc = "Dap Add breakpoint at line" })
 
 map("n", "<F8>", function()
   require("dap").continue()
@@ -40,10 +40,10 @@ end, { desc = "Dap Open UI" })
 -- Dap Python
 map("n", "<leader>dpr", function()
   require("dap-python").test_method()
-end, { desc = "Dap-Python Run and debug closes test method above the cursor" })
+end, { desc = "Dap-Python Run and debug closest test method above the cursor" })
 map("n", "<leader>dpc", function()
   require("dap-python").test_class()
-end, { desc = "Dap-Python Run and debug closes test class above the cursor" })
+end, { desc = "Dap-Python Run and debug closest test class above the cursor" })
 
 -- Dap Go
 map("n", "<leader>dgt", function()
@@ -54,10 +54,13 @@ map("n", "<leader>dgl", function()
 end, { desc = "Dap-Go Debug last go test" })
 
 -- Gopher
-map("n", "<leader>gsj", "<cmd> GoTagAdd json <CR>", { desc = "Gopher Add json struct tags" })
-map("n", "<leader>gsy", "<cmd> GoTagAdd taml <CR>", { desc = "Gopher Add yaml struct tags" })
+map("n", "<leader>gsj", "<cmd>GoTagAdd json <CR>", { desc = "Gopher Add json struct tags" })
+map("n", "<leader>gsy", "<cmd>GoTagAdd taml <CR>", { desc = "Gopher Add yaml struct tags" })
 
 -- Treesitter Context
 map("n", "[c", function()
   require("treesitter-context").go_to_context()
 end, { desc = "treesitter-context Jump to context (upwards)" })
+
+-- Sessions
+map("n", "<leader>ps", "<cmd>SearchSession<CR>", { desc = "Telescope Find sessions" })

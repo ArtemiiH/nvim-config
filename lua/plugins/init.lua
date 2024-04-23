@@ -118,4 +118,34 @@ return {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
+
+  {
+    "rmagatti/auto-session",
+    cmd = {
+      "SessionSave",
+      "SessionRestore",
+      "SessionRestoreFromFile",
+      "SessionDelete",
+      "SessionPurgeOrphaned",
+      "Autosession",
+    },
+    opts = function()
+      return require "configs.auto-session"
+    end,
+    config = function(_, opts)
+      require("auto-session").setup(opts)
+    end,
+    lazy = false,
+  },
+
+  {
+    "rmagatti/session-lens",
+    cmd = { "SearchSession" },
+    dependencies = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("session-lens").setup {
+        previewer = true,
+      }
+    end,
+  },
 }
