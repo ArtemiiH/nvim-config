@@ -35,7 +35,7 @@ map("n", "<leader>duo", function()
 end, { desc = "Dap Open UI" })
 map("n", "<leader>duc", function()
   require("dapui").close()
-end, { desc = "Dap Open UI" })
+end, { desc = "Dap Close UI" })
 
 -- Dap Python
 map("n", "<leader>dpr", function()
