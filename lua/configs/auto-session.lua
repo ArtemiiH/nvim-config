@@ -13,7 +13,7 @@ end
 
 return {
   pre_save_cmds = { pre_save },
-  post_restore_cmds = { post_resore },
+  post_restore_cmds = { post_resore, "bfirst" },
   log_level = "error",
   auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
   auto_save_enabled = true,
