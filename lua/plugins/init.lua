@@ -25,6 +25,11 @@ return {
         "lua-language-server",
         "stylua",
 
+        -- webdev stuff
+        "css-lsp",
+        "html-lsp",
+        "typescript-language-server",
+
         -- shell stuff
         "shfmt",
 
