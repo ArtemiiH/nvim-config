@@ -9,6 +9,11 @@ local function post_resore()
   nvim_tree.tree.toggle()
   local key = vim.api.nvim_replace_termcodes("<C-w>=", true, false, true)
   vim.api.nvim_feedkeys(key, "n", false)
+
+  -- workaround to ensure that theme is loaded
+  -- since some highlights are wrong after loading session
+  -- TODO: find what is causing it
+  require("base46").load_all_highlights()
 end
 
 return {
