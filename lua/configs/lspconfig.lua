@@ -1,8 +1,18 @@
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
-local on_attach = require("nvchad.configs.lspconfig").on_attach
+local nvchad_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
+local map = vim.keymap.set
+
+local on_attach = function(client, bufnr)
+  nvchad_on_attach(client, bufnr)
+  if client.server_capabilities.inlayHintProvider then
+    map("n", "<leader>ti", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, { desc = "LSP Toggle inlay hints" })
+  end
+end
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
@@ -13,6 +23,15 @@ lspconfig.gopls.setup {
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
     gopls = {
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
       completeUnimported = true,
       usePlaceholders = true,
       analyses = {
@@ -22,8 +41,7 @@ lspconfig.gopls.setup {
   },
 }
 
--- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "lua_ls", "pyright" }
+local servers = { "html", "cssls", "tsserver", "pyright" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
