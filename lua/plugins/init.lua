@@ -43,6 +43,8 @@ return {
         "isort",
         "black",
         "debugpy",
+        -- toml
+        "taplo",
       },
     },
   },

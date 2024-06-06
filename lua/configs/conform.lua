@@ -1,5 +1,6 @@
 return {
   formatters_by_ft = {
+    toml = { "taplo" },
     lua = { "stylua" },
     python = { "isort", "black" },
   },
