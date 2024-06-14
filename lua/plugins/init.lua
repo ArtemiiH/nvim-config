@@ -138,4 +138,8 @@ return {
       -- Your setup opts here
     },
   },
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
 }
