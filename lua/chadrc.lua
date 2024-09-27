@@ -2,9 +2,8 @@
 local M = {}
 
 M.ui = {
-  theme = "chadracula",
-  theme_toggle = { "chadracula", "gruvbox_light" },
-  transparency = true,
+  theme = "catppuccin",
+  theme_toggle = { "catppuccin", "gruvbox_light" },
 
   hl_override = {
     Comment = {

@@ -66,3 +66,6 @@ map("n", "<leader>gsy", "<cmd>GoTagAdd taml <CR>", { desc = "Gopher Add yaml str
 map("n", "[c", function()
   require("treesitter-context").go_to_context()
 end, { desc = "treesitter-context Jump to context (upwards)" })
+
+-- Telescope
+map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "telescope todos" })
