@@ -20,37 +20,6 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        -- lua stuff
-        "lua-language-server",
-        "stylua",
-
-        -- webdev stuff
-        "css-lsp",
-        "html-lsp",
-        "typescript-language-server",
-        "prettier",
-
-        -- shell stuff
-        "shfmt",
-
-        -- go stuff
-        "gopls",
-
-        -- python stuff
-        "pyright",
-        "isort",
-        "black",
-        "debugpy",
-
-        -- toml
-        "taplo",
-
-        -- c/cpp
-        "clangd",
-      },
-    },
   },
 
   {

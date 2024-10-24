@@ -66,7 +66,7 @@ lspconfig.lua_ls.setup {
   },
 }
 
-local servers = { "html", "cssls", "ts_ls", "pyright", "clangd" }
+local servers = { "html", "cssls", "ts_ls", "pyright", "clangd", "marksman" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
