@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "catppuccin",
   theme_toggle = { "catppuccin", "gruvbox_light" },
 
@@ -14,7 +14,9 @@ M.ui = {
   hl_add = {
     NvimTreeOpenedFolderName = { fg = "green", bold = true },
   },
+}
 
+M.ui = {
   nvdash = {
     load_on_startup = true,
   },
@@ -30,10 +32,10 @@ M.ui = {
   term = {
     float = {
       relative = "editor",
-      row = 0.20,
-      col = 0.2,
-      width = 0.6,
-      height = 0.5,
+      row = 0.3,
+      col = 0.25,
+      width = 0.5,
+      height = 0.4,
       border = "single",
     },
   },
