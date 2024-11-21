@@ -9,6 +9,19 @@ return {
   },
 
   {
+    "nvim-tree/nvim-tree.lua",
+    cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = function()
+      local opts = require "nvchad.configs.nvimtree"
+      opts.view = {
+        side = "right",
+        width = 50,
+      }
+      return opts
+    end,
+  },
+
+  {
     "nvim-treesitter/nvim-treesitter-context",
     event = "BufReadPre",
     enabled = true,
