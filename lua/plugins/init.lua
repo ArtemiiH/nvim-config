@@ -100,6 +100,7 @@ return {
       vim.fn["mkdp#util#install"]()
     end,
   },
+
   {
     "hedyhli/outline.nvim",
     lazy = true,
@@ -111,10 +112,12 @@ return {
       -- Your setup opts here
     },
   },
+
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+
   {
     "folke/todo-comments.nvim",
     lazy = false,
@@ -124,5 +127,11 @@ return {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     },
+  },
+
+  {
+    "folke/zen-mode.nvim",
+    lazy = false,
+    opts = {},
   },
 }
