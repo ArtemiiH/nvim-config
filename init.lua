@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Lazy
 require "init-lazy"
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "tokyonight"
 
 vim.schedule(function()
   require "mappings"
