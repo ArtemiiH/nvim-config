@@ -1,71 +1,41 @@
-require "nvchad.mappings"
+vim.keymap.set("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
+vim.keymap.set("i", "<C-e>", "<End>", { desc = "move end of line" })
+vim.keymap.set("i", "<C-h>", "<Left>", { desc = "move left" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "move right" })
+vim.keymap.set("i", "<C-j>", "<Down>", { desc = "move down" })
+vim.keymap.set("i", "<C-k>", "<Up>", { desc = "move up" })
 
--- add yours here
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "switch window right" })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "switch window down" })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "switch window up" })
 
-local map = vim.keymap.set
+vim.keymap.set("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
 
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "TmuxNavigate window left" })
-map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "TmuxNavigate window right" })
-map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "TmuxNavigate window down" })
-map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "TmuxNavigate window up" })
+vim.keymap.set("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
+vim.keymap.set("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
+vim.keymap.set("n", "<leader>n", "<cmd>set nu!<CR>", { desc = "toggle line number" })
+vim.keymap.set("n", "<leader>rn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
 
-map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+-- global lsp vim.keymap.setpings
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
--- Terminal
-map("n", "<leader>i", function()
-  require("nvchad.term").new { pos = "float", id = "floatTerm" }
-end, { desc = "Terminal New floating window" })
+vim.keymap.set("n", "<leader>b", "<cmd>enew<CR>", { desc = "buffer new" })
+vim.keymap.set("n", "<leader>x", "<cmd>bd<CR>", { desc = "close buffer" })
 
--- Dap
-map("n", "<leader>db", "<cmd>DapToggleBreakpoint <CR>", { desc = "Dap Add breakpoint at line" })
+-- Comment
+vim.keymap.set("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+vim.keymap.set("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 
-map("n", "<F8>", function()
-  require("dap").continue()
-end, { desc = "Dap Continue" })
-map("n", "<F9>", function()
-  require("dap").step_over()
-end, { desc = "Dap Step over" })
-map("n", "<F4>", function()
-  require("dap").step_into()
-end, { desc = "Dap Step into" })
-map("n", "<F7>", function()
-  require("dap").step_out()
-end, { desc = "Dap Step out" })
+-- telescope
+vim.keymap.set("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "telescope git commits" })
+vim.keymap.set("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "telescope git status" })
 
--- Dap-UI
-map("n", "<leader>duo", function()
-  require("dapui").open()
-end, { desc = "Dap Open UI" })
-map("n", "<leader>duc", function()
-  require("dapui").close()
-end, { desc = "Dap Close UI" })
+-- advent of code
+vim.keymap.set("n", "<leader>sx", "<cmd>source %<CR>")
+vim.keymap.set("n", "<leader>lx", ":.lua<CR>")
+vim.keymap.set("v", "<leader>lx", ":lua<CR>")
 
--- Dap Python
-map("n", "<leader>dpr", function()
-  require("dap-python").test_method()
-end, { desc = "Dap-Python Run and debug closest test method above the cursor" })
-map("n", "<leader>dpc", function()
-  require("dap-python").test_class()
-end, { desc = "Dap-Python Run and debug closest test class above the cursor" })
-
--- Dap Go
-map("n", "<leader>dgt", function()
-  require("dap-go").debug_test()
-end, { desc = "Dap-Go Debug go test" })
-map("n", "<leader>dgl", function()
-  require("dap-go").debug_last()
-end, { desc = "Dap-Go Debug last go test" })
-
--- Gopher
-map("n", "<leader>gsj", "<cmd>GoTagAdd json <CR>", { desc = "Gopher Add json struct tags" })
-map("n", "<leader>gsy", "<cmd>GoTagAdd taml <CR>", { desc = "Gopher Add yaml struct tags" })
-
--- Treesitter Context
-map("n", "[c", function()
-  require("treesitter-context").go_to_context()
-end, { desc = "treesitter-context Jump to context (upwards)" })
-
--- Telescope
-map("n", "<leader>tt", "<cmd>TodoTelescope<CR>", { desc = "telescope todos" })
+-- terminal
+vim.keymap.set("t", "<C-x>", "<C-\\><C-n>")
