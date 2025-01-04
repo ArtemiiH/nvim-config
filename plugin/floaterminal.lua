@@ -34,13 +34,13 @@ local function create_floating_window(opts)
   end
 
   local win_config = merge_tables({
-    relative = 'editor',
+    relative = "editor",
     width = width,
     height = height,
     col = col,
     row = row,
-    style = 'minimal',
-    border = 'rounded',
+    style = "minimal",
+    border = "rounded",
   }, opts.win_config or {})
 
   local win = vim.api.nvim_open_win(buf, true, win_config)
@@ -51,7 +51,7 @@ end
 local function toggle_terminal()
   if not vim.api.nvim_win_is_valid(state.floating.win) then
     state.floating = create_floating_window { buf = state.floating.buf, width = 0.66, height = 0.66 }
-    if vim.bo[state.floating.buf].buftype ~= 'terminal' then
+    if vim.bo[state.floating.buf].buftype ~= "terminal" then
       vim.cmd.terminal()
     end
   else
@@ -59,6 +59,6 @@ local function toggle_terminal()
   end
 end
 
-vim.api.nvim_create_user_command('Floaterminal', toggle_terminal, {})
+vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
 
-vim.keymap.set('n', '<leader>ft', '<CMD>Floaterminal<CR>', { desc = 'Toggle Floaterminal' })
+vim.keymap.set("n", "<leader>ft", "<CMD>Floaterminal<CR>", { desc = "Toggle Floaterminal" })
