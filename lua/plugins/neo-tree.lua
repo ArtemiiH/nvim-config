@@ -1,16 +1,31 @@
 return {
-  'nvim-neo-tree/neo-tree.nvim',
-  version = '*',
+  "nvim-neo-tree/neo-tree.nvim",
+  version = "*",
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+    "nvim-lua/plenary.nvim",
+    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    "MunifTanjim/nui.nvim",
   },
-  cmd = 'Neotree',
+  cmd = "Neotree",
   keys = {
-    { '<C-n>',     ':Neotree action=focus source=filesystem position=right toggle=true reveal<CR>', desc = 'NeoTree focues tree',            silent = true },
-    { '<C-b>',     ':Neotree action=focus source=buffers position=right toggle=true<CR>',           desc = 'NeoTree show buffers',           silent = true },
-    { '<leader>o', ':Neotree action=focus source=document_symbols position=right toggle=true<CR>',  desc = 'NeoTree focus document symbols', silent = true },
+    {
+      "<C-n>",
+      ":Neotree action=focus source=filesystem position=right toggle=true reveal<CR>",
+      desc = "NeoTree focues tree",
+      silent = true,
+    },
+    {
+      "<C-b>",
+      ":Neotree action=focus source=buffers position=right toggle=true<CR>",
+      desc = "NeoTree show buffers",
+      silent = true,
+    },
+    {
+      "<leader>o",
+      ":Neotree action=focus source=document_symbols position=right toggle=true<CR>",
+      desc = "NeoTree focus document symbols",
+      silent = true,
+    },
   },
   opts = {
     auto_clean_after_session_restore = true,
@@ -35,6 +50,6 @@ return {
     window = {
       width = 40,
     },
-    sources = { 'filesystem', 'buffers', 'document_symbols' },
+    sources = { "filesystem", "buffers", "document_symbols" },
   },
 }

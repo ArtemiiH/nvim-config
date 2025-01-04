@@ -1,6 +1,6 @@
 return {
-  'catppuccin/nvim',
-  name = 'catppuccin',
+  "catppuccin/nvim",
+  name = "catppuccin",
   priority = 1000,
   opts = {
     integrations = {
@@ -13,18 +13,18 @@ return {
       native_lsp = {
         enabled = true,
         virtual_text = {
-          errors = { 'italic' },
-          hints = { 'italic' },
-          warnings = { 'italic' },
-          information = { 'italic' },
-          ok = { 'italic' },
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
+          ok = { "italic" },
         },
         underlines = {
-          errors = { 'underline' },
-          hints = { 'underline' },
-          warnings = { 'underline' },
-          information = { 'underline' },
-          ok = { 'underline' },
+          errors = { "underline" },
+          hints = { "underline" },
+          warnings = { "underline" },
+          information = { "underline" },
+          ok = { "underline" },
         },
         inlay_hints = {
           background = true,
@@ -37,7 +37,7 @@ return {
       which_key = true,
       indent_blankline = {
         enabled = true,
-        scope_color = 'rosewater', -- catppuccin color (eg. `lavender`) Default: text
+        scope_color = "rosewater", -- catppuccin color (eg. `lavender`) Default: text
         colored_indent_levels = true,
       },
     },
