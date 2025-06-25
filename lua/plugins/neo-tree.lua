@@ -15,12 +15,6 @@ return {
       silent = true,
     },
     {
-      "<C-b>",
-      ":Neotree action=focus source=buffers position=right toggle=true<CR>",
-      desc = "NeoTree show buffers",
-      silent = true,
-    },
-    {
       "<leader>o",
       ":Neotree action=focus source=document_symbols position=right toggle=true<CR>",
       desc = "NeoTree focus document symbols",
