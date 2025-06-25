@@ -3,7 +3,7 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons", "arkav/lualine-lsp-progress" },
   opts = {
     options = {
-      theme = "catppuccin",
+      theme = "tokyonight",
       sections = {
         lualine_c = { "filename", "lsp_progress" },
       },
