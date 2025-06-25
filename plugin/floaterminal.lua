@@ -44,6 +44,7 @@ local function create_floating_window(opts)
   }, opts.win_config or {})
 
   local win = vim.api.nvim_open_win(buf, true, win_config)
+  vim.wo[win].number = false
 
   return { buf = buf, win = win }
 end
